@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor.Infrastructure;
 using school.Entities;
+using school1;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,19 +11,19 @@ namespace school.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        readonly static List<Student> students = new List<Student>();
+        DataContext dataContext;
         // GET: api/<Student>
         [HttpGet]
         public List<Student> Get()
         {
-            return students;
+            return dataContext.students;
         }
 
         // GET api/<Student>/5
         [HttpGet("{id}")]
         public ActionResult<Student> Get(int id)
         {
-            Student tmp = students.Find(e => e.Id == id);
+            Student tmp = dataContext.students.Find(e => e.Id == id);
             if (tmp == null)
                 return NotFound();
             return Ok(tmp);
@@ -32,7 +33,7 @@ namespace school.Controllers
         [HttpPost]
         public void Post(Student s)
         {
-            students.Add(s);
+            dataContext.students.Add(s);
         }
 
         // PUT api/<Student>/5
@@ -40,11 +41,11 @@ namespace school.Controllers
         public ActionResult<Student> Put(int id, Student s)
         {
 
-            Student temp = students.Find(e => e.Id == id);
+            Student temp = dataContext.students.Find(e => e.Id == id);
             if (temp == null)
                 return NotFound();
-            students.Remove(temp);
-            students.Add(s);
+            dataContext.students.Remove(temp);
+            dataContext.students.Add(s);
             return Ok(s);
 
         }
@@ -53,10 +54,10 @@ namespace school.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Student> Delete(int id)
         {
-            Student temp = students.Find(e => e.Id == id);
+            Student temp = dataContext.students.Find(e => e.Id == id);
             if (temp == null)
                 return NotFound();
-            students.Remove(temp);
+            dataContext.students.Remove(temp);
             return Ok();
         }
     }

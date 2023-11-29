@@ -466,11 +466,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\שרה ויספיש\\Desktop\\school1\\school1\\school1.csproj",
+      "projectUniqueName": "C:\\Users\\שרה ויספיש\\Desktop\\proggraming\\school1\\school1\\school1.csproj",
       "projectName": "school1",
-      "projectPath": "C:\\Users\\שרה ויספיש\\Desktop\\school1\\school1\\school1.csproj",
+      "projectPath": "C:\\Users\\שרה ויספיש\\Desktop\\proggraming\\school1\\school1\\school1.csproj",
       "packagesPath": "C:\\Users\\שרה ויספיש\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\שרה ויספיש\\Desktop\\school1\\school1\\obj\\",
+      "outputPath": "C:\\Users\\שרה ויספיש\\Desktop\\proggraming\\school1\\school1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

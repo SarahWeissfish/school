@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using school.Entities;
+using school1;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,7 +10,8 @@ namespace school.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
-        readonly static List<Course> courses = new List<Course>();
+        DataContext dataContext;
+        
         public CourseController()
         {
 
@@ -19,14 +21,14 @@ namespace school.Controllers
         [HttpGet]
         public List<Course> Get()
         {
-            return courses;
+            return dataContext.courses;
         }
 
         // GET api/<Course>/5
         [HttpGet("{id}")]
         public ActionResult<Course> Get(int id)
         {
-            var course = courses.Find(e => e.Id == id);
+            var course = dataContext.courses.Find(e => e.Id == id);
             if (course == null)
                 return NotFound();
 
@@ -39,18 +41,18 @@ namespace school.Controllers
         [HttpPost]
         public void Post(Course c)
         {
-            courses.Add(c);
+            dataContext.courses.Add(c);
         }
 
         // PUT api/<Course>/5
         [HttpPut("{id}")]
         public ActionResult<Course> Put(int id, Course c)
         {
-            Course temp = courses.Find(e => e.Id == id);
+            Course temp = dataContext.courses.Find(e => e.Id == id);
             if (temp == null)
                 return NotFound();
-            courses.Remove(temp);
-            courses.Add(c);
+            dataContext.courses.Remove(temp);
+            dataContext.courses.Add(c);
 
             return Ok();
         }
@@ -59,10 +61,10 @@ namespace school.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Course> Delete(int id)
         {
-            Course temp = courses.Find(e => e.Id == id);
+            Course temp = dataContext.courses.Find(e => e.Id == id);
             if (temp == null)
                 return NotFound();
-            courses.Remove(temp);
+            dataContext.courses.Remove(temp);
             return Ok(temp);
         }
     }
